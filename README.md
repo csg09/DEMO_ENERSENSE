@@ -839,8 +839,8 @@ SOFTWARE.
 **Ganesh (csg09)**
 
 - GitHub: [@csg09](https://github.com/csg09)
-- LinkedIn: [Add your LinkedIn](https://linkedin.com/in/your-profile)
-- Email: your.email@example.com
+- LinkedIn: https://www.linkedin.com/in/csg09/
+- Email: csganesh09@gmail.com
 
 ### Project Links
 
