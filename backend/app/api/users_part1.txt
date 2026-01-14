@@ -1,0 +1,136 @@
+"""User management API routes."""
+
+import secrets
+from datetime import datetime, timedelta
+from typing import Optional, List
+from fastapi import APIRouter, HTTPException, Depends, status
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
+from pydantic import BaseModel, EmailStr
+
+from app.core.database import get_db
+from app.core.security import get_password_hash, validate_password
+from app.models.user import User
+from app.api.auth import get_current_user_from_token
+
+router = APIRouter()
+
+# Constants
+INVITE_EXPIRATION_DAYS = 7
+ADMIN_ROLES = ["admin", "facility_manager"]
+
+
+# Pydantic Models
+class UserResponse(BaseModel):
+    """User response model."""
+    id: str
+    email: str
+    name: str
+    role: str
+    status: str
+    tenant_id: str
+    last_login_at: Optional[datetime] = None
+    created_at: datetime
+    updated_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class UserListResponse(BaseModel):
+    """Response for list users endpoint."""
+    users: List[UserResponse]
+    total: int
+
+
+class InviteUserRequest(BaseModel):
+    """Request body for inviting a user."""
+    email: EmailStr
+    name: str
+    role: str
+
+
+class InviteUserResponse(BaseModel):
+    """Response after sending invite."""
+    id: str
+    email: str
+    name: str
+    role: str
+    status: str
+    invite_token: str
+    invite_expires_at: datetime
+    message: str
+
+
+class AcceptInviteRequest(BaseModel):
+    """Request body for accepting an invite."""
+    token: str
+    password: str
+
+
+class AcceptInviteResponse(BaseModel):
+    """Response after accepting invite."""
+    id: str
+    email: str
+    name: str
+    role: str
+    status: str
+    message: str
+
+
+class UpdateUserRequest(BaseModel):
+    """Request body for updating a user."""
+    name: Optional[str] = None
+    role: Optional[str] = None
+    status: Optional[str] = None
+
+
+class MessageResponse(BaseModel):
+    """Simple message response."""
+    message: str
+
+
+def check_admin_permission(current_user: User) -> None:
+    """Check if current user has admin permissions."""
+    if current_user.role not in ADMIN_ROLES:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only admins and facility managers can perform this action"
+        )
+
+
+def generate_invite_token() -> str:
+    """Generate a secure invite token."""
+    return secrets.token_urlsafe(32)
+
+
+@router.get("", response_model=UserListResponse)
+async def list_users(
+    current_user: User = Depends(get_current_user_from_token),
+    db: AsyncSession = Depends(get_db)
+):
+    """List all users in tenant (admin/facility manager only)."""
+    check_admin_permission(current_user)
+
+    # Get all users in the same tenant
+    result = await db.execute(
+        select(User).where(User.tenant_id == current_user.tenant_id)
+    )
+    users = result.scalars().all()
+
+    user_responses = [
+        UserResponse(
+            id=user.id,
+            email=user.email,
+            name=user.name,
+            role=user.role,
+            status=user.status,
+            tenant_id=user.tenant_id,
+            last_login_at=user.last_login_at,
+            created_at=user.created_at,
+            updated_at=user.updated_at
+        )
+        for user in users
+    ]
+
+    return UserListResponse(users=user_responses, total=len(user_responses))

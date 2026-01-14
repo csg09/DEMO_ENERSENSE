@@ -1,0 +1,1 @@
+"""SmartSense Backend Application."""

@@ -1,0 +1,60 @@
+MIT License
+
+Copyright (c) 2025 Ganesh (csg09)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+ATTRIBUTION NOTICE
+
+This project is built upon and inspired by the AutoCoder framework created by 
+Leon van Zyl (https://github.com/Leonv1237/autocoder).
+
+The AutoCoder project is licensed under its own terms. Please refer to the 
+original repository for its license information:
+https://github.com/Leonv1237/autocoder/blob/main/LICENSE
+
+---
+
+THIRD-PARTY LICENSES
+
+This software uses open-source packages with their own licenses:
+
+Backend Dependencies:
+- FastAPI: MIT License
+- SQLAlchemy: MIT License
+- Pydantic: MIT License
+- python-jose: MIT License
+- passlib: BSD License
+- uvicorn: BSD License
+- And others (see requirements.txt)
+
+Frontend Dependencies:
+- React: MIT License
+- TypeScript: Apache License 2.0
+- Vite: MIT License
+- TailwindCSS: MIT License
+- Recharts: MIT License
+- And others (see package.json)
+
+For complete license information for each dependency, please refer to their 
+respective repositories and the files listed in:
+- backend/requirements.txt
+- frontend/package.json
