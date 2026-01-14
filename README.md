@@ -18,8 +18,8 @@ DEMO_ENERSENSE is a full-stack **Energy & Facilities Management Dashboard** buil
 ![Assets Page](./docs/screenshots/assets_page.png)
 *Comprehensive asset registry with health monitoring*
 
-### Alerts
-![Alerts](./docs/screenshots/reports.png)
+### Reports
+![Reports](./docs/screenshots/reports.png)
 *Priority & demand-based report management system*
 
 ### Work Orders
