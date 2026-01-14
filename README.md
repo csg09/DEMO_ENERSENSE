@@ -8,8 +8,23 @@
 
 DEMO_ENERSENSE is a full-stack **Energy & Facilities Management Dashboard** built using FastAPI (backend) and React + TypeScript (frontend). This project demonstrates how an enterprise-style energy platform can be rapidly assembled using an AI-assisted development workflow.
 
-![Dashboard Preview](./docs/screenshots/dashboard.png)
-*Main dashboard showing KPIs, energy trends, and asset health*
+## Screenshots
+
+### Dashboard
+![Dashboard](./docs/screenshots/dashboard.jpg)
+*Real-time monitoring dashboard with KPIs and energy trends*
+
+### Asset Management
+![Assets Page](./docs/screenshots/assets_page.jpg)
+*Comprehensive asset registry with health monitoring*
+
+### Alerts
+![Alerts](./docs/screenshots/reports.jpg)
+*Priority & demand-based report management system*
+
+### Work Orders
+![Work Orders](./docs/screenshots/work_orders.jpg)
+*Work order tracking and assignment*
 
 ---
 
