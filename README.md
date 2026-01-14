@@ -62,6 +62,7 @@ DEMO_ENERSENSE is a full-stack **Energy & Facilities Management Dashboard** buil
 - 📈 **Executive Reporting**: High-level dashboards for decision makers
 - 📱 **Responsive Design**: Mobile-friendly interface built with TailwindCSS
 - 📝 **REST API**: Well-documented API with interactive Swagger/OpenAPI docs
+- 🚀 **Local Development**: Easy setup for local development and testing
 
 ### Technical Highlights
 - Async/await architecture for high performance
@@ -679,18 +680,11 @@ Detailed deployment instructions are available in [docs/DEPLOYMENT.md](./docs/DE
    alembic upgrade head
    ```
 
-### Docker Deployment
+### Development Tools
+- **Local Development**: SQLite database
+- **API Testing**: Browser-based (Swagger UI)
+- **Development Server**: Uvicorn (FastAPI) + Vite (React)
 
-```bash
-# Build and run with Docker Compose
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-
-# Stop services
-docker-compose down
-```
 
 ### Deployment Checklist
 
